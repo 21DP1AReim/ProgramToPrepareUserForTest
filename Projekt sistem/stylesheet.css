@@ -1,0 +1,34 @@
+html {
+    font-family: sans-serif;
+  }
+  
+  form {
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  div {
+    margin-bottom: 10px;
+  }
+  
+  fieldset {
+    background: cyan;
+    border: 5px solid blue;
+  }
+  
+  legend {
+    border: 2px solid black;
+    padding: 15px;
+    background: rgb(199, 72, 72);
+    color: black;
+    font-size: 17px;
+    font-family:'Franklin Gothic Medium';
+  }
+#submit_button{
+    font-family: fantasy;
+    font-size: 25px;
+    background-color: bisque;
+}
+#form{
+    font-size: 20px;
+}
