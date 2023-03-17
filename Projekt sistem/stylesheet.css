@@ -1,20 +1,14 @@
 html {
     font-family: sans-serif;
+    background-color:slategray;
   }
   
-  form {
-    width: 600px;
-    margin: 0 auto;
-  }
   
   div {
     margin-bottom: 10px;
+    
   }
   
-  fieldset {
-    background: cyan;
-    border: 5px solid blue;
-  }
   
   legend {
     border: 2px solid black;
@@ -24,11 +18,88 @@ html {
     font-size: 17px;
     font-family:'Franklin Gothic Medium';
   }
-#submit_button{
-    font-family: fantasy;
-    font-size: 25px;
-    background-color: bisque;
+#startTestBtn{
+  position: absolute;
+  top: 550px;
+  left: 800px;
+  width: 240px;
+  height: 40px;
+  background: bisque;
+  border: none;
+  margin-top: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  transition: 0.4s ease;
+  font-family: fantasy;
+  font-size: 25px;
+  line-height: 10px;
+
 }
 #form{
     font-size: 20px;
 }
+#checkboxes{
+  font-size: 20px;
+  position: absolute;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  top: 300px;
+  left: 550px;
+  /*border: 10px solid black;*/
+  width: 755px;
+  background-color: whitesmoke;
+  
+}
+
+#checkboxes input{
+  margin: 8px 10px 0px 5px;
+  cursor: pointer;
+}
+
+
+
+#topBit{
+  top: 5px;
+  position: absolute;
+  left: 550px;
+  background-color: bisque;
+  padding: 50px 65px 50px 50px;
+  height: 400px;
+
+}
+
+#bottomBit{
+  position: absolute;
+  top: 830px;
+  background-color: aqua;
+  left: 550px;
+  padding: 40px 185px 40px 50px;
+  z-index: 10;
+
+}
+
+#middleBackGround{
+  position: absolute;
+  background-color: white;
+  width: 755px;
+  height: 900px;
+  left: 550px;
+  z-index: -5;
+
+}
+/*
+#leftSide{
+  width: 350px;
+  height: 900px;
+  background-color: aliceblue;
+}
+#rightSide{
+  top: 100px;
+  right: 500px;
+  width: 350px;
+  height: 100px;
+  background-color: black;
+}
+*/
