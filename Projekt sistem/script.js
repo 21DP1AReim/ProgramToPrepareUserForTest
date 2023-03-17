@@ -1,6 +1,21 @@
-submit = document.getElementById("submit_button")
+submit = document.querySelector("#startTestBtn")
 submit.addEventListener("click",funct)
 
 function funct(){
-    alert
+    if(document.querySelector("#sports").checked){
+        console.log("Hey")
+
+    }else{
+        console.log(":)")
+    }
+    
 }
+
+function startTest(){
+    document.getElementById("checkboxes").style.display = "none";
+    document.getElementById("startTestBtn").style.display ="none";
+    document.getElementById("legend").style.display="none";
+
+}
+
+
