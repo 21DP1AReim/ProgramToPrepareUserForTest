@@ -8,49 +8,71 @@
     <link rel="stylesheet" href="stylesheet.css">
 
 </head>
-<form id="form">
-    <fieldset>
-      <legend>Choose test themes</legend>
+<header id="topBit">
+
+
+<h2>Hello</h2>
+<h3>Tests, kas lietotāju sagatavo 4. kursa noslēguma darba teorētiskai daļai!</h3>
+</header>
+
+<footer id = "bottomBit">Par sīkāku informāciju par testu, var saņemt rakstot uz artshock@inbox.lv </footer>
+      <!--<legend id ="legend">Choose test themes</legend>-->
+      <div id="leftSide"></div>
+      <div id="rightSide"></div>
+      <div id="checkboxes">
+      <input type="checkbox"  name="Test" value="Programmēšanas valodas"> Programmēšanas valodas<br>
+      <input type="checkbox"  name="Test" value="Algoritmi, datu tipi, struktūras"> Algoritmi, datu tipi, struktūras<br>
+      <input type="checkbox"  name="Test" value="Datu bāzu tehnoloģijas"> Datu bāzu tehnoloģijas<br>
+      <input type="checkbox"  name="Test" value="Web programmēsanas pamati"> Web programmēsanas pamati<br>
+      <input type="checkbox"  name="Test" value="Operētājsistēmas, operētājsistēmu uzbūves pamati"> Operētājsistēmas, operētājsistēmu uzbūves pamati<br>
+      <input type="checkbox"  name="Test" value="Biroja tehnika"> Biroja tehnika<br>
+      <input type="checkbox"  name="Test" value="Valsts normatīvo aktu prasības"> Valsts normatīvo aktu prasības<br>
+
+    </div>
       <div>
-        <input type="checkbox" id="coding" name="interest" value="coding" />
-        <label for="coding">Programmēšanas valodas</label>
-      </div>
-      <div>
-        <input type="checkbox" id="music" name="interest" value="music" />
-        <label for="music">Algoritmi, datu tipi, struktūras</label>
-      </div>
-      <div>
-        <input type="checkbox" id="art" name="interest" value="art" />
-        <label for="art">Web programmēsanas pamati</label>
-      </div>
-      <div>
-        <input type="checkbox" id="sports" name="interest" value="sports" />
-        <label for="sports">Datu bāzu tehnoloģijas</label>
-      </div>
-      <div>
-        <input type="checkbox" id="cooking" name="interest" value="cooking" />
-        <label for="cooking">Operētājsistēmas, operētājsistēmu uzbūves pamati</label>
-      </div>
-      <div>
-        <input type="checkbox" id="cock" name="interest" value="cooking" />
-        <label for="cooking">Biroja tehnika</label>
-      </div>
-      <div>
-        <input type="checkbox" id="cock" name="interest" value="cooking" />
-        <label for="cooking">Valsts normatīvo aktu prasības</label>
-      </div>
-      <div>
-        <input type="checkbox" id="cock" name="interest" value="cooking" />
-        <label for="cooking">Valsts normatīvo aktu prasības</label>
-      </div>
-      <div>
-        <button id="submit_button" type="submit">START TEST</button>
+        <button id="startTestBtn" onclick="startTest()">START TEST</button>
       </div>
     </fieldset>
   </form>
-    
-
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
+
+<div id="middleBackGround"> </div>
 </html>
 
+
+
+<!-- 
+<div>
+  <input type="checkbox" id="coding" name="interest" value="coding" />
+  <label for="coding">Programmēšanas valodas</label>
+</div>
+<div>
+  <input type="checkbox" id="music" name="interest" value="music" />
+  <label for="music">Algoritmi, datu tipi, struktūras</label>
+</div>
+<div>
+  <input type="checkbox" id="art" name="interest" value="art" />
+  <label for="art">Web programmēsanas pamati</label>
+</div>
+<div>
+  <input type="checkbox" id="sports" name="interest" value="sports" />
+  <label for="sports">Datu bāzu tehnoloģijas</label>
+</div>
+<div>
+  <input type="checkbox" id="cooking" name="interest" value="cooking" />
+  <label for="cooking">Operētājsistēmas, operētājsistēmu uzbūves pamati</label>
+</div>
+<div>
+  <input type="checkbox" id="cock" name="interest" value="cooking" />
+  <label for="cooking">Biroja tehnika</label>
+</div>
+<div>
+  <input type="checkbox" id="cock" name="interest" value="cooking" />
+  <label for="cooking">Valsts normatīvo aktu prasības</label>
+</div>
+<div>
+  <input type="checkbox" id="cock" name="interest" value="cooking" />
+  <label for="cooking">Valsts normatīvo aktu prasības</label>
+</div>
+-->
