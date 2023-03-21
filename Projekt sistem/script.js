@@ -14,8 +14,12 @@ function funct(){
 function startTest(){
     document.getElementById("checkboxes").style.display = "none";
     document.getElementById("startTestBtn").style.display ="none";
-    document.getElementById("legend").style.display="none";
+    document.getElementById("topBit").style.display="none";
+    document.getElementById("radio").style.display="none";
 
 }
+
+
+
 
 
