@@ -8,17 +8,21 @@
     <link rel="stylesheet" href="stylesheet.css">
 
 </head>
+
+<div id="leftSide"></div>
+<div id="rightSide"></div>
+
+<div id = middleBit> 
 <header id="topBit">
 
 
-<h2>Hello</h2>
-<h3>Tests, kas lietotāju sagatavo 4. kursa noslēguma darba teorētiskai daļai!</h3>
+<h2 id="head">Vai jūs esat gatavi 4. kursa programmēšanas tehniķa eksāmenam? Pārbaudiet savas zināšanas!</h2>
+<h3 id="instruction"> Izvēlaties jebkuras tēmas, un jebkuru grūtību, grūtība ietekmē jautājumu skaitu</h3>
 </header>
 
-<footer id = "bottomBit">Par sīkāku informāciju par testu, var saņemt rakstot uz artshock@inbox.lv </footer>
+<footer id = "bottomBit">Sīkāku informāciju par testu, var saņemt rakstot uz artshock@inbox.lv </footer>
       <!--<legend id ="legend">Choose test themes</legend>-->
-      <div id="leftSide"></div>
-      <div id="rightSide"></div>
+
       <div id="checkboxes">
       <input type="checkbox"  name="Test" value="Programmēšanas valodas"> Programmēšanas valodas<br>
       <input type="checkbox"  name="Test" value="Algoritmi, datu tipi, struktūras"> Algoritmi, datu tipi, struktūras<br>
@@ -27,13 +31,20 @@
       <input type="checkbox"  name="Test" value="Operētājsistēmas, operētājsistēmu uzbūves pamati"> Operētājsistēmas, operētājsistēmu uzbūves pamati<br>
       <input type="checkbox"  name="Test" value="Biroja tehnika"> Biroja tehnika<br>
       <input type="checkbox"  name="Test" value="Valsts normatīvo aktu prasības"> Valsts normatīvo aktu prasības<br>
-
     </div>
+    <div id="radio" class = "radio-class">
+      <input type="radio" id="radio1" name="Radio">
+      <label for="radio1">Easy</label>
+      <input type="radio" id="radio2" name="Radio">
+      <label for="radio2">Normal</label>
+      <input type="radio" id="radio3" name="Radio">
+      <label for="radio3">Brain Teaser</label>
+
+    </div >
       <div>
         <button id="startTestBtn" onclick="startTest()">START TEST</button>
       </div>
-    </fieldset>
-  </form>
+    </div>
     <script src="script.js"></script>
 </body>
 
@@ -76,3 +87,4 @@
   <label for="cooking">Valsts normatīvo aktu prasības</label>
 </div>
 -->
+
