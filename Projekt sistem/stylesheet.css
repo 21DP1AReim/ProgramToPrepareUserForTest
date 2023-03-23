@@ -1,11 +1,13 @@
 html {
     font-family: sans-serif;
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);  
-    
+
   }
   
   .radio-class input[type="radio"] {
     width: 15px;
+    cursor: pointer;
+    margin: 0px -10px 0px 20px;
   }
   
   .radio-class label {
@@ -15,7 +17,7 @@ html {
 
     .radio-class{
       position: fixed;
-      top: 66%;
+      top: 68%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 1vw;
@@ -29,10 +31,12 @@ html {
     
   }
   #head{
+    text-align: center;
     font-size: 2vw;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   }
   #instruction{
+    text-align: center;
     font-size: 1vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif
   }
@@ -66,7 +70,7 @@ html {
 
   transition: 0.4s ease;
   position: fixed;
-  top: 35%;
+  top: 32%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
@@ -80,7 +84,7 @@ html {
 }
 
 #checkboxes input{
-  margin: 30px 100px 10px 10px;
+  margin: 1vw 5vw 1vw 5vw;
   cursor: pointer;
 }
 
@@ -101,13 +105,12 @@ html {
 }
 
 #bottomBit{
-
-  
-    position: fixed;
-    top: 97.8%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
+  font-size: 1vw;
+  text-align: center;
+  position: fixed;
+  top: 97.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   background-image: linear-gradient(to left, white,rgb(224, 197, 197));
   width: 50%;
