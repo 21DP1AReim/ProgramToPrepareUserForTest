@@ -31,7 +31,7 @@
       <input type="checkbox"  name="Test" value="Biroja tehnika"> Biroja tehnika<br>
       <input type="checkbox"  name="Test" value="Valsts normatīvo aktu prasības"> Valsts normatīvo aktu prasības<br>
     </div>
-    <div id="radio" class = "radio-class">
+    <div id="startRadio" class = "radio-class">
       <input type="radio" id="radio1" name="Radio">
       <label for="radio1">Viegli</label>
       <input type="radio" id="radio2" name="Radio" checked>
@@ -41,49 +41,31 @@
 
     </div >
       <div>
-        <button id="startTestBtn" onclick="startTest()">START TEST</button>
+        <button id="startTestBtn" class="btn" onclick="startTest()">START TEST</button>
       </div>
     </div>
+    <div class="container" >
+      <div id="game" class="justify-center flex-column" hidden>
+        <h2 id="question">What is the answer to this questions?</h2>
+        <div id="c1" class="choice-container">
+          <p class="izveles-prefix">A</p>
+          <p class="izveles-text" data-number="1">Choice 1</p>
+        </div>
+        <div id="c2" class="choice-container">
+          <p class="izveles-prefix">B</p>
+          <p class="izveles-text" data-number="2">Choice 2</p>
+        </div>
+        <div id="c3" class="choice-container">
+          <p class="izveles-prefix">C</p>
+          <p class="izveles-text" data-number="3">Choice 3</p>
+        </div>
+        <div id="c4" class="choice-container">
+          <p class="izveles-prefix">D</p>
+          <p class="izveles-text" data-number="4">Choice 4</p>
+        </div>
     <script src="script.js"></script>
 </body>
 
 <div id="middleBackGround"> </div>
 </html>
-
-
-
-<!-- 
-<div>
-  <input type="checkbox" id="coding" name="interest" value="coding" />
-  <label for="coding">Programmēšanas valodas</label>
-</div>
-<div>
-  <input type="checkbox" id="music" name="interest" value="music" />
-  <label for="music">Algoritmi, datu tipi, struktūras</label>
-</div>
-<div>
-  <input type="checkbox" id="art" name="interest" value="art" />
-  <label for="art">Web programmēsanas pamati</label>
-</div>
-<div>
-  <input type="checkbox" id="sports" name="interest" value="sports" />
-  <label for="sports">Datu bāzu tehnoloģijas</label>
-</div>
-<div>
-  <input type="checkbox" id="cooking" name="interest" value="cooking" />
-  <label for="cooking">Operētājsistēmas, operētājsistēmu uzbūves pamati</label>
-</div>
-<div>
-  <input type="checkbox" id="cock" name="interest" value="cooking" />
-  <label for="cooking">Biroja tehnika</label>
-</div>
-<div>
-  <input type="checkbox" id="cock" name="interest" value="cooking" />
-  <label for="cooking">Valsts normatīvo aktu prasības</label>
-</div>
-<div>
-  <input type="checkbox" id="cock" name="interest" value="cooking" />
-  <label for="cooking">Valsts normatīvo aktu prasības</label>
-</div>
--->
 
