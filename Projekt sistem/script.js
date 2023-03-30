@@ -9,7 +9,7 @@ let testQuestions = []
 let arrLength = 0
 let pvQuestions = [ // programmēšanas valodu jautājumi
 {
-    question: "PV Question 1",
+    question: "Programmēšanas valodas jautājums 1",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -17,7 +17,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 2",
+    question: "Programmēšanas valodas jautājums 2",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -25,7 +25,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 3",
+    question: "Programmēšanas valodas jautājums 3",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -33,7 +33,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 4",
+    question: "Programmēšanas valodas jautājums 4",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -41,7 +41,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 5",
+    question: "Programmēšanas valodas jautājums 5",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -49,7 +49,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 6",
+    question: "Programmēšanas valodas jautājums 6",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -57,7 +57,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 7",
+    question: "Programmēšanas valodas jautājums 7",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -65,7 +65,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 8",
+    question: "Programmēšanas valodas jautājums 8",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -73,7 +73,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 9",
+    question: "Programmēšanas valodas jautājums 9",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -81,7 +81,7 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
     answer: 1
 },
 {
-    question: "PV Question 10",
+    question: "Programmēšanas valodas jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -93,7 +93,79 @@ let pvQuestions = [ // programmēšanas valodu jautājumi
 
 let dbQuestions = [ // Datu bazu jautajumi 
 {
-    question: "Hello world",
+    question: "Datu bāzu jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Datu bāzu jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -103,7 +175,79 @@ let dbQuestions = [ // Datu bazu jautajumi
 ]
 let adtsQuestions = [ // alrogirtmu, datu tipu, struktūras jautājumi
 {
-    question: "Hello world",
+    question: "Algoritmu datu tipi, struktūras jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Algoritmu datu tipi, struktūras jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -114,7 +258,79 @@ let adtsQuestions = [ // alrogirtmu, datu tipu, struktūras jautājumi
 
 let wppQuestions = [ //  WEB programmēšanas pamatu jautājumi
 {
-    question: "Hello world",
+    question: "WEB  programmēšanas pamatu jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1   
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "WEB  programmēšanas pamatu jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -125,7 +341,79 @@ let wppQuestions = [ //  WEB programmēšanas pamatu jautājumi
 
 let osQuestions = [ // operētājsistēmu jautājumi
 {
-    question: "Hello world",
+    question: "Operētājsistēmu jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Operētājsistēmu jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -134,9 +422,81 @@ let osQuestions = [ // operētājsistēmu jautājumi
 }
 ]
 
-let btQuestions = [ // biroja tehnimkas jautājumi
+let btQuestions = [ // biroja tehnikas jautājumi
 {
-    question: "Hello world",
+    question: "Biroja tehnikas jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Biroja tehnikas jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -147,7 +507,79 @@ let btQuestions = [ // biroja tehnimkas jautājumi
 
 let vnapQuestions = [ // valsts normatīvo aktu prasību jautājumi
 {
-    question: "Hello world",
+    question: "Valsts normatīvo aktu prasības jautājums 1",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 2",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 3",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 4",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 5",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 6",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 7",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 8",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 9",
+    choice1: "Yes",
+    choice2: "No",
+    choice3: "Perhaps",
+    choice4: "Perhaps not",
+    answer: 1
+},
+{
+    question: "Valsts normatīvo aktu prasības jautājums 10",
     choice1: "Yes",
     choice2: "No",
     choice3: "Perhaps",
@@ -184,6 +616,7 @@ function startTest(){
     values.includes("Datu bāzu tehnoloģijas") ? addDBQuestions() : null;
     values.includes("Web programmēsanas pamati") ? addWPPQuestions() : null;
     values.includes("Operētājsistēmas, operētājsistēmu uzbūves pamati") ? addOSQuestions() : null;
+    values.includes("Biroja tehnika") ? addBTQuestions() : null;
     values.includes("Valsts normatīvo aktu prasības") ? addVNAPQuestions() : null;
     
 
