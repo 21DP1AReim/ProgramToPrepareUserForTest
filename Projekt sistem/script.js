@@ -5,6 +5,13 @@ const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('izveles-text'));
 let questionCountPerTheme = 0
 let currentQuestionIndex = 0
+let correctQuestionArray = []
+let userAnswerArray = []
+let selectedChoice = 0;
+
+let selectedAnswer;
+let correctAnswer;
+
 let testQuestions = []
 let arrLength = 0
 let pvQuestions = [ // programmēšanas valodu jautājumi
@@ -634,6 +641,9 @@ function startTest(){
     document.getElementById("startRadio").style.display="none";
 
     // Shows questions and choice answers
+    document.getElementById("nxtQuestion").style.display = "inline";
+    document.getElementById("prevQuestion").style.display = "inline";
+
     document.getElementById("c1").style.display = "flex";
     document.getElementById("c2").style.display = "flex";
     document.getElementById("c3").style.display = "flex";
@@ -642,10 +652,18 @@ function startTest(){
 
     choices.forEach((choice) =>{
         choice.addEventListener('click', (event) =>{
-            const selectedChoice = event.target;
-            const selectedAnswer = selectedChoice.dataset['number']
-            currentQuestionIndex++;
-            nextQuestion();
+            
+            selectedChoice = event.target;
+            removeSelect()
+
+
+            selectedChoice.classList.add("selected");
+            console.log(selectedChoice)
+
+            
+            
+            
+
         })
     })
 
@@ -654,10 +672,39 @@ function startTest(){
 };
 
 function nextQuestion(){
+    
+    if(userAnswerArray.length >= 0 ){ // WHY DOES THIS FIX EVERYTHING
+        selectedChoice.classList.remove("selected")
+    }
+    
     if(testQuestions.length == currentQuestionIndex){
         alert("Tests Beidzies!")
         return;
     }
+    if(selectedChoice == "None" || selectedChoice == 0){
+        alert("Please select a choice!")
+        return;
+    }
+    if(userAnswerArray.length > currentQuestionIndex && currentQuestionIndex >= 1){
+        // when user goes back to previous question and comes back to next question, the selected question doesn't show up
+        document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
+    }
+    
+    selectedAnswer = selectedChoice.dataset['number']
+    correctAnswer = testQuestions[currentQuestionIndex].answer;
+
+
+    userAnswerArray[currentQuestionIndex] = selectedAnswer
+    correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+    console.log(userAnswerArray)
+    console.log(correctQuestionArray)
+
+
+
+
+
+    currentQuestionIndex++;
     let currentQuestion = testQuestions[currentQuestionIndex]
     question.innerText = currentQuestion.question
 
@@ -665,10 +712,31 @@ function nextQuestion(){
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice'+number]
     })
-
+    selectedChoice = "None"
 }
 
-function previousQuestion(){};
+function previousQuestion(){
+    if(currentQuestionIndex == 0){
+        alert("Testa sākums")
+        return;
+    }
+
+
+    currentQuestionIndex--;
+    // document.querySelector('[data-number="%d"]', userAnswerArray[currentQuestionIndex]).classList.add("selected")
+    removeSelect();
+    document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
+    let currentQuestion = testQuestions[currentQuestionIndex]
+    question.innerText = currentQuestion.question
+    
+
+    choices.forEach((choice) =>{
+        const number = choice.dataset['number'];
+        choice.innerText = currentQuestion['choice'+number]
+    })
+    
+
+};
 function finishTest(){};
 function goHome(){};
 
@@ -722,9 +790,6 @@ function addVNAPQuestions(){
     }
 }
 
-
-
-
 function chooseTestQuestions(arrayLength){
     let usedQuestions = [];
     let wantQuestionCount = 0;
@@ -744,3 +809,9 @@ function chooseTestQuestions(arrayLength){
     return usedQuestions;
 }
 
+function removeSelect(){
+    document.querySelector('[data-number="4"]').classList.remove("selected")
+    document.querySelector('[data-number="3"]').classList.remove("selected")
+    document.querySelector('[data-number="2"]').classList.remove("selected")
+    document.querySelector('[data-number="1"]').classList.remove("selected")
+};
