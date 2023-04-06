@@ -672,30 +672,51 @@ function startTest(){
 };
 
 function nextQuestion(){
+
+    if(testQuestions.length-1 == currentQuestionIndex){
+        selectedAnswer = selectedChoice.dataset['number']
+        correctAnswer = testQuestions[currentQuestionIndex].answer;
     
-    if(userAnswerArray.length >= 0 ){ // WHY DOES THIS FIX EVERYTHING
-        selectedChoice.classList.remove("selected")
-    }
+        
+        userAnswerArray[currentQuestionIndex] = selectedAnswer
+        correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+        console.log(userAnswerArray)
+        console.log(correctQuestionArray)
     
-    if(testQuestions.length == currentQuestionIndex){
+
         alert("Tests Beidzies!")
         return;
     }
+
     if(selectedChoice == "None" || selectedChoice == 0){
         alert("Please select a choice!")
         return;
     }
-    if(userAnswerArray.length > currentQuestionIndex && currentQuestionIndex >= 1){
-        // when user goes back to previous question and comes back to next question, the selected question doesn't show up
-        document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
+    if(userAnswerArray.length >= 0 ){ // WHY DOES THIS FIX EVERYTHING
+        selectedChoice.classList.remove("selected")
     }
+    
+
+
+    
+    
+
+
+
+
+    
     
     selectedAnswer = selectedChoice.dataset['number']
     correctAnswer = testQuestions[currentQuestionIndex].answer;
 
+    
 
     userAnswerArray[currentQuestionIndex] = selectedAnswer
     correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+
+    currentQuestionIndex++;
 
     console.log(userAnswerArray)
     console.log(correctQuestionArray)
@@ -704,10 +725,36 @@ function nextQuestion(){
 
 
 
-    currentQuestionIndex++;
+    
     let currentQuestion = testQuestions[currentQuestionIndex]
     question.innerText = currentQuestion.question
 
+    if(userAnswerArray.length > currentQuestionIndex){
+        // when user goes back to previous question and comes back to next question, the selected question doesn't show up
+           document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
+        }
+
+/* 
+    if(userAnswerArray.length > currentQuestionIndex){
+
+        
+        if(currentQuestionIndex == 0){
+            document.querySelector(`[data-number="${userAnswerArray[0]}"]`).classList.add("selected")
+        }
+        if(currentQuestionIndex == 1){
+            document.querySelector(`[data-number="${userAnswerArray[1]}"]`).classList.add("selected")
+        }
+        if(currentQuestionIndex == 2){
+            document.querySelector(`[data-number="${userAnswerArray[2]}"]`).classList.add("selected")
+        }
+        if(currentQuestionIndex == 3){
+            document.querySelector(`[data-number="${userAnswerArray[3]}"]`).classList.add("selected")
+        }
+        if(currentQuestionIndex == 4){
+            document.querySelector(`[data-number="${userAnswerArray[4]}"]`).classList.add("selected")
+        }
+    }
+    */
     choices.forEach((choice) =>{
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice'+number]
@@ -815,3 +862,4 @@ function removeSelect(){
     document.querySelector('[data-number="2"]').classList.remove("selected")
     document.querySelector('[data-number="1"]').classList.remove("selected")
 };
+
