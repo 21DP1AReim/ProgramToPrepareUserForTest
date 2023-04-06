@@ -115,9 +115,9 @@ top: 50%;
 left: 50%;
 /* bring your own prefixes */
 transform: translate(-50%, -50%);
-background-image: linear-gradient(rgb(192, 142, 142),rgb(57, 57, 105));
+background-image: linear-gradient(rgb(192, 142, 142),rgba(209, 64, 64, 0.562));
 
-background-color: white;
+background-color: rgb(231, 227, 227);
 width: 50%;
 height: 100%;
 
@@ -207,7 +207,7 @@ line-height: 10%;
 .choice-container:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
-  transform: translateY(-0.1rem); /*Remove this */
+  transform: translateY(-0.1rem); 
   transition: transform 150ms;
 }
 
@@ -249,4 +249,21 @@ line-height: 10%;
 
 #c1,#c2,#c3,#c4,#question{
   display: none;
+}
+
+.selected{
+  background-color: rgb(179, 221, 221);
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(248, 244, 244, 0.5);
+}
+
+#nxtQuestion{
+  position: fixed;
+  top: 67%;
+  width: 30%;
+}
+
+#prevQuestion{
+  position: fixed;
+  top: 73%;
+  width: 30%;
 }
