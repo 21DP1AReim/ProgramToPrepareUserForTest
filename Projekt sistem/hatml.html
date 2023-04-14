@@ -45,6 +45,7 @@
       </div>
     </div>
     <div class="container" >
+        <label id = "progress" hidden>Question 1 out of 20</label>
       <div id="game" class="justify-center flex-column" hidden>
         <h2 id="question">What is the answer to this questions?</h2>
         <div id="c1" class="choice-container">
@@ -66,6 +67,8 @@
       </div>
         <button id = "nxtQuestion" class="btn" onclick="nextQuestion()" hidden>Next Question </button>
         <button id = "prevQuestion" class="btn" onclick="previousQuestion()" hidden>Previous Question </button>
+        <button id = "finishTest" class="btn" onclick="finishTest()" hidden>Finish Test </button>
+        <button id = "mainMenuBtn" class="btn" onclick="goBackToStartScreen()" hidden>Go back to start screen</button>
         <script src="script.js"></script>
 </body>
 
