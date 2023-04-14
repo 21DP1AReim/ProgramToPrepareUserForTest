@@ -630,6 +630,8 @@ function startTest(){
     let currentQuestion = testQuestions[currentQuestionIndex]
     question.innerText = currentQuestion.question
 
+    showUpdate()
+
     choices.forEach((choice) =>{
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice'+number]
@@ -643,6 +645,7 @@ function startTest(){
     // Shows questions and choice answers
     document.getElementById("nxtQuestion").style.display = "inline";
     document.getElementById("prevQuestion").style.display = "inline";
+    document.getElementById("progress").style.display = "inline"
 
     document.getElementById("c1").style.display = "flex";
     document.getElementById("c2").style.display = "flex";
@@ -658,11 +661,6 @@ function startTest(){
 
 
             selectedChoice.classList.add("selected");
-            console.log(selectedChoice)
-
-            
-            
-            
 
         })
     })
@@ -673,37 +671,18 @@ function startTest(){
 
 function nextQuestion(){
 
-    if(testQuestions.length-1 == currentQuestionIndex){
-        selectedAnswer = selectedChoice.dataset['number']
-        correctAnswer = testQuestions[currentQuestionIndex].answer;
-    
-        
-        userAnswerArray[currentQuestionIndex] = selectedAnswer
-        correctQuestionArray[currentQuestionIndex] = correctAnswer;
-
-        console.log(userAnswerArray)
-        console.log(correctQuestionArray)
-    
-
-        alert("Tests Beidzies!")
-        return;
+    if(testQuestions.length-2 == currentQuestionIndex){
+        showFinishTestBtn()
     }
 
     if(selectedChoice == "None" || selectedChoice == 0){
         alert("Please select a choice!")
         return;
     }
-    if(userAnswerArray.length >= 0 ){ // WHY DOES THIS FIX EVERYTHING
+    if(userAnswerArray.length >= 0 ){ // This fixes something
         selectedChoice.classList.remove("selected")
     }
     
-
-
-    
-    
-
-
-
 
     
     
@@ -722,7 +701,7 @@ function nextQuestion(){
     console.log(correctQuestionArray)
 
 
-
+    showUpdate()
 
 
     
@@ -734,27 +713,6 @@ function nextQuestion(){
            document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
         }
 
-/* 
-    if(userAnswerArray.length > currentQuestionIndex){
-
-        
-        if(currentQuestionIndex == 0){
-            document.querySelector(`[data-number="${userAnswerArray[0]}"]`).classList.add("selected")
-        }
-        if(currentQuestionIndex == 1){
-            document.querySelector(`[data-number="${userAnswerArray[1]}"]`).classList.add("selected")
-        }
-        if(currentQuestionIndex == 2){
-            document.querySelector(`[data-number="${userAnswerArray[2]}"]`).classList.add("selected")
-        }
-        if(currentQuestionIndex == 3){
-            document.querySelector(`[data-number="${userAnswerArray[3]}"]`).classList.add("selected")
-        }
-        if(currentQuestionIndex == 4){
-            document.querySelector(`[data-number="${userAnswerArray[4]}"]`).classList.add("selected")
-        }
-    }
-    */
     choices.forEach((choice) =>{
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice'+number]
@@ -763,13 +721,15 @@ function nextQuestion(){
 }
 
 function previousQuestion(){
+    
     if(currentQuestionIndex == 0){
         alert("Testa sākums")
         return;
     }
-
+    showNextQuestionBtn()
 
     currentQuestionIndex--;
+    showUpdate()
     // document.querySelector('[data-number="%d"]', userAnswerArray[currentQuestionIndex]).classList.add("selected")
     removeSelect();
     document.querySelector(`[data-number="${userAnswerArray[currentQuestionIndex]}"]`).classList.add("selected")
@@ -857,9 +817,83 @@ function chooseTestQuestions(arrayLength){
 }
 
 function removeSelect(){
+
+
+
     document.querySelector('[data-number="4"]').classList.remove("selected")
     document.querySelector('[data-number="3"]').classList.remove("selected")
     document.querySelector('[data-number="2"]').classList.remove("selected")
     document.querySelector('[data-number="1"]').classList.remove("selected")
 };
 
+function finishTest(){
+    selectedAnswer = selectedChoice.dataset['number']
+    correctAnswer = testQuestions[currentQuestionIndex].answer;
+    userAnswerArray[currentQuestionIndex] = selectedAnswer
+    correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+    document.getElementById("mainMenuBtn").style.display = "inline"
+    document.getElementById("nxtQuestion").style.display = "none";
+    document.getElementById("prevQuestion").style.display = "none";
+    document.getElementById("finishTest").style.display = "none";
+    document.getElementById("progress").style.display = "none"
+
+    document.getElementById("c1").style.display = "none";
+    document.getElementById("c2").style.display = "none";
+    document.getElementById("c3").style.display = "none";
+    document.getElementById("c4").style.display = "none";
+    document.getElementById("question").style.display = "none";
+
+
+
+}
+
+function showFinishTestBtn(){
+    document.getElementById("nxtQuestion").style.display = "none"
+    document.getElementById("finishTest").style.display = "inline"
+}
+
+function showNextQuestionBtn(){
+    document.getElementById("nxtQuestion").style.display = "inline"
+    document.getElementById("finishTest").style.display = "none"
+}
+
+function goBackToStartScreen(){
+
+
+    document.getElementById("mainMenuBtn").style.display = "none"
+    document.getElementById("checkboxes").style.display = "inline";
+    document.getElementById("startTestBtn").style.display ="inline";
+    document.getElementById("topBit").style.display="inline";
+    document.getElementById("startRadio").style.display="inline";
+
+    document.getElementById("radio2").checked = true
+
+    questionCountPerTheme = 0
+    currentQuestionIndex = 0
+    correctQuestionArray = []
+    userAnswerArray = []
+    selectedChoice = 0;
+
+    selectedAnswer;
+    correctAnswer;
+
+    testQuestions = []
+    arrLength = 0
+
+    removeSelect()
+
+
+    let checkboxes = document.getElementsByName('Test');
+        
+    for(var i= 0; i<checkboxes.length; i++){
+        
+    checkboxes[i].checked = false;}
+        
+        
+
+}
+
+function showUpdate(){
+    document.getElementById("progress").innerText = `Question ${currentQuestionIndex+1} out of ${testQuestions.length}`
+}
