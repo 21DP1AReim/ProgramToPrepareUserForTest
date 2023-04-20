@@ -827,10 +827,56 @@ function removeSelect(){
 };
 
 function finishTest(){
+
+    let correctQuestions = () =>{
+        let correct = 0;
+        for(let i = 0; i < testQuestions.length; i++){
+            if(parseInt(userAnswerArray[i]) == correctQuestionArray[i]){
+                correct++;
+            }
+            else{
+                continue;
+            }
+        }
+        return correct;
+        
+    }
+
+
     selectedAnswer = selectedChoice.dataset['number']
     correctAnswer = testQuestions[currentQuestionIndex].answer;
     userAnswerArray[currentQuestionIndex] = selectedAnswer
     correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+    console.log(userAnswerArray)
+    console.log(correctQuestionArray)
+
+    document.getElementById("correctQuestions").innerText = `You got  ${correctQuestions()} out of ${testQuestions.length} questions right!`
+    let scorePrcnt = Math.round((correctQuestions() / testQuestions.length) * 100);
+    let endMsg = "";
+
+    if(scorePrcnt >= 90){
+        endMsg = "Good job! You're ready for the theoretical part of the test!"
+    }else if(scorePrcnt >=80){
+        endMsg = "Impressive! You're almost ready for the theoretical part of the exam!"
+    }else if(scorePrcnt >= 70){
+        endMsg = "Well done! Most don't make it this far! Keep it up and try again!"
+    }else if(scorePrcnt >=60){
+        endMsg = "Learning is not attained by chance, it must be sought for with ardor and attended to with diligence."
+    }else if(scorePrcnt >= 50){
+        endMsg = "Not bad, but you can do better! Maybe try out different themes or get some rest"
+    }else if(scorePrcnt >= 40){
+        endMsg = "There's still much to learn but you can do it! Learning is not attained by chance, it must be sought for with ardor and attended to with diligence."
+    }else if(scorePrcnt >= 30){
+        endMsg = "Don't give up just because you aren't doing well, keep at it and one day you'll notice a massive improvement!"
+    }else if(scorePrcnt < 30){
+        endMsg = "Keep learning, and you'll do better! Anyone who stops learning is old, whether at twenty or eighty."
+    }
+
+    document.getElementById("endScreenOutput").innerText = endMsg;
+
+    document.getElementById("endScreenOutput").style.display = "inline";
+    document.getElementById("correctQuestions").style.display = "inline";
 
     document.getElementById("mainMenuBtn").style.display = "inline"
     document.getElementById("nxtQuestion").style.display = "none";
@@ -860,6 +906,9 @@ function showNextQuestionBtn(){
 
 function goBackToStartScreen(){
 
+
+    document.getElementById("endScreenOutput").style.display = "none";
+    document.getElementById("correctQuestions").style.display = "none";
 
     document.getElementById("mainMenuBtn").style.display = "none"
     document.getElementById("checkboxes").style.display = "inline";
