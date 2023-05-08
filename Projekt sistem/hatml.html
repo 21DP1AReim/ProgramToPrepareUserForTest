@@ -22,22 +22,23 @@
 
 <footer id = "bottomBit">Sīkāku informāciju par testu, var saņemt rakstot uz place_holder@inbox.lv </footer>
 
-      <div id="checkboxes" class = checkbox-class>
-      <input id ="pv" type="checkbox"  name="Test" value="Programmēšanas valodas">
-      <label for ="pv">Programmēšanas valodas</label><br>
-      <input id ="adts" type="checkbox"  name="Test" value="Algoritmi, datu tipi, struktūras"> 
-      <label for ="adts">Algoritmi, datu tipi, struktūras</label><br>
-      <input id = "dbt" type="checkbox"  name="Test" value="Datu bāzu tehnoloģijas"> 
-      <label for ="dbt">Datu bāzu tehnoloģijas</label><br>
-      <input id = "wpp" type="checkbox"  name="Test" value="Web programmēsanas pamati"> 
-      <label for ="wpp">Web programmēsanas pamati</label><br>
-      <input id = "oouzp" type="checkbox"  name="Test" value="Operētājsistēmas, operētājsistēmu uzbūves pamati"> 
-      <label for ="oouzp">Operētājsistēmas, operētājsistēmu uzbūves pamatis</label><br>
-      <input id="bt" type="checkbox"  name="Test" value="Biroja tehnika"> 
-      <label for ="bt">Biroja tehnika</label><br>
-      <input id="vnap" type="checkbox"  name="Test" value="Valsts normatīvo aktu prasības"> 
-      <label for ="vnap">Valsts normatīvo aktu prasības</label><br>
-    </div>
+      
+        <div id="checkboxes" class = checkbox-class>
+          <input id ="pv" type="checkbox"  name="Test" value="Programmēšanas valodas">
+          <label for ="pv">Programmēšanas valodas</label><br>
+          <input id ="adts" type="checkbox"  name="Test" value="Algoritmi, datu tipi, struktūras"> 
+          <label for ="adts">Algoritmi, datu tipi, struktūras</label><br>
+          <input id = "dbt" type="checkbox"  name="Test" value="Datu bāzu tehnoloģijas"> 
+          <label for ="dbt">Datu bāzu tehnoloģijas</label><br>
+          <input id = "wpp" type="checkbox"  name="Test" value="Web programmēsanas pamati"> 
+          <label for ="wpp">Web programmēsanas pamati</label><br>
+          <input id = "oouzp" type="checkbox"  name="Test" value="Operētājsistēmas, operētājsistēmu uzbūves pamati"> 
+          <label for ="oouzp">Operētājsistēmas, operētājsistēmu uzbūves pamatis</label><br>
+          <input id="bt" type="checkbox"  name="Test" value="Biroja tehnika"> 
+          <label for ="bt">Biroja tehnika</label><br>
+          <input id="vnap" type="checkbox"  name="Test" value="Valsts normatīvo aktu prasības"> 
+          <label for ="vnap">Valsts normatīvo aktu prasības</label><br>
+        </div>
     <div id="startRadio" class = "radio-class">
       <input type="radio" id="radio1" name="Radio">
       <label for="radio1">Viegli</label>
@@ -53,10 +54,11 @@
     </div>
     <div class="container" >
         <label id = "progress" hidden>Question 1 out of 20</label>
+        <label id = "timer" hidden>00:00:00</label>
         <label id = "correctQuestions" hidden>You got 1 out of 20 questions right!</label>
         <label id = "endScreenOutput" hidden> Don't feel discouraged, come back later and try again! Learning takes time!</label>
       <div id="game" class="justify-center flex-column" hidden>
-        <h2 id="question">What is the answer to this question?</h2>
+        <h2 id="question">What is the answer to this questions?</h2>
         <div id="c1" class="choice-container">
           <p class="izveles-prefix">A</p>
           <p class="izveles-text" data-number="1">Choice 1</p>
