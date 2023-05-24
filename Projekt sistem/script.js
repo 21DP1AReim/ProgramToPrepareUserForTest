@@ -9,17 +9,21 @@ let questionCountPerTheme = 0
 let currentQuestionIndex = 0
 let correctQuestionArray = []
 let userAnswerArray = []
+let wrongIds = []
 let selectedChoice = 0;
 let currentQuestion;
 let selectedAnswer;
 let correctAnswer;
+let wrongQuestionIndex = 0
 let sec = 0;
 let min = 0;
 let hr = 0;
 let interval;
 let elapsedTime;
 let startTime;
-
+const wrongQuestion = document.getElementById('questionEndScreen');
+const rightAnwer =  document.getElementById('rightChoice');
+const wrongAnser = document.getElementById('wrongChoice');
 let testQuestions = []
 let arrLength = 0
 let pvQuestions = [ // programmēšanas valodu jautājumi
@@ -2238,14 +2242,6 @@ let vnapQuestions = [ // valsts normatīvo aktu prasību jautājumi
     answer: 3 
 },
 {
-    question: "Valsts normatīvo aktu prasības jautājums 1",
-    choice1: "Yes",
-    choice2: "No",
-    choice3: "Perhaps",
-    choice4: "Perhaps not",
-    answer: 1
-},
-{
     question: " Ieteicamā darba telpas platība vienam darbiniekam ir vismaz... ", 
     choice1: "3 m2 ", 
     choice2: "3,8 m2 ", 
@@ -2836,6 +2832,52 @@ function removeSelect(){
 };
 
 function finishTest(){
+
+    
+
+    selectedAnswer = selectedChoice.dataset['number']
+    correctAnswer = testQuestions[currentQuestionIndex].answer;
+    userAnswerArray[currentQuestionIndex] = selectedAnswer
+    correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
+
+    for(let i = 0; i < testQuestions.length; i++){
+        if(parseInt(userAnswerArray[i]) != correctQuestionArray[i]){
+            wrongIds.push(i)
+        }
+    }
+
+
+
+    
+    if(wrongIds.length > 0){
+        rightAnwer.innerHTML =  testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]]
+        wrongAnser.innerHTML = testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]]
+        wrongQuestion.innerHTML = testQuestions[wrongIds[0]].question
+        if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 120){
+            wrongAnser.classList.add("choice-long")
+        }else if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 60){
+            wrongAnser.classList.add("choice-medium")
+        }else{
+            wrongAnser.classList.add("choice-short")
+        }
+        if(testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]].length > 120){
+            rightAnwer.classList.add("choice-long")
+        }else if(testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]].length > 60){
+            rightAnwer.classList.add("choice-medium")
+        }else{
+            rightAnwer.classList.add("choice-short")
+        } 
+
+        document.getElementById("forWrong").style.display = "inline"
+        document.getElementById("questionEndScreen").style.display = "inline"
+        document.getElementById("checkCorrect").style.display = "inline"
+        
+    }
+
+
+
+
     sec = Math.floor((elapsedTime / 1000) % 60);
     min = Math.floor((elapsedTime / (1000 * 60)) % 60);
     hr = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
@@ -2857,40 +2899,17 @@ function finishTest(){
     }
 
 
-    selectedAnswer = selectedChoice.dataset['number']
-    correctAnswer = testQuestions[currentQuestionIndex].answer;
-    userAnswerArray[currentQuestionIndex] = selectedAnswer
-    correctQuestionArray[currentQuestionIndex] = correctAnswer;
+
 
     console.log(userAnswerArray)
     console.log(correctQuestionArray)
 
     document.getElementById("correctQuestions").innerText = `You got  ${correctQuestions()} out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${sec} seconds!`
-    let scorePrcnt = Math.round((correctQuestions() / testQuestions.length) * 100);
-    let endMsg = "";
     startTimer(false);
 
-    if(scorePrcnt >= 90){
-        endMsg = "Good job! You're ready for the theoretical part of the test!"
-    }else if(scorePrcnt >=80){
-        endMsg = "Impressive! You're almost ready for the theoretical part of the exam!"
-    }else if(scorePrcnt >= 70){
-        endMsg = "Well done! Most don't make it this far! Keep it up and try again!"
-    }else if(scorePrcnt >=60){
-        endMsg = "Learning is not attained by chance, it must be sought for with ardor and attended to with diligence."
-    }else if(scorePrcnt >= 50){
-        endMsg = "Not bad, but you can do better! Maybe try out different themes or get some rest"
-    }else if(scorePrcnt >= 40){
-        endMsg = "There's still much to learn but you can do it! Learning is not attained by chance, it must be sought for with ardor and attended to with diligence."
-    }else if(scorePrcnt >= 30){
-        endMsg = "Don't give up just because you aren't doing well, keep at it and one day you'll notice a massive improvement!"
-    }else if(scorePrcnt < 30){
-        endMsg = "Keep learning, and you'll do better! Anyone who stops learning is old, whether at twenty or eighty."
-    }
 
-    document.getElementById("endScreenOutput").innerText = endMsg;
-
-    document.getElementById("endScreenOutput").style.display = "inline";
+    document.getElementById("questionEndScreen").style.display = "inline";
+    
     document.getElementById("correctQuestions").style.display = "inline";
 
     document.getElementById("mainMenuBtn").style.display = "inline"
@@ -2923,7 +2942,7 @@ function goBackToStartScreen(){
 
     document.getElementById("endScreenOutput").style.display = "none";
     document.getElementById("correctQuestions").style.display = "none"
-
+    document.getElementById("checkCorrect").style.display = "none"
     document.getElementById("mainMenuBtn").style.display = "none"
     document.getElementById("checkboxes").style.display = "inline";
     document.getElementById("startTestBtn").style.display ="inline";
@@ -3022,3 +3041,72 @@ function updateTimeOnTimer(){
     }
 }
 
+function nextWrongQuestion(){
+    if(wrongIds.length <= wrongQuestionIndex+1){
+        alert("Beigas klāt")
+        return;
+    }
+
+    wrongQuestionIndex++
+    rightAnwer.classList.remove("choice-short")
+    rightAnwer.classList.remove("choice-medium")
+    rightAnwer.classList.remove("choice-long")
+    wrongAnser.classList.remove("choice-short")
+    wrongAnser.classList.remove("choice-medium")
+    wrongAnser.classList.remove("choice-long")
+    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+correctQuestionArray[wrongIds[wrongQuestionIndex]]]
+    let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
+    rightAnwer.innerHTML =  right
+    wrongAnser.innerHTML = wrong
+    wrongQuestion.innerHTML = testQuestions[wrongIds[wrongQuestionIndex]].question
+
+    if(wrong.length > 120){
+        wrongAnser.classList.add("choice-long")
+    }else if(wrong.length > 60){
+        wrongAnser.classList.add("choice-medium")
+    }else{
+        wrongAnser.classList.add("choice-short")
+    }
+    if(right.length > 120){
+        rightAnwer.classList.add("choice-long")
+    }else if(right.length > 60){
+        rightAnwer.classList.add("choice-medium")
+    }else{
+        rightAnwer.classList.add("choice-short")
+    }   
+}
+
+function previousWrongQuestion(){
+    if(wrongQuestionIndex == 0){
+        alert("Sākums")
+        return;
+    }
+    wrongQuestionIndex--
+    rightAnwer.classList.remove("choice-short")
+    rightAnwer.classList.remove("choice-medium")
+    rightAnwer.classList.remove("choice-long")
+    wrongAnser.classList.remove("choice-short")
+    wrongAnser.classList.remove("choice-medium")
+    wrongAnser.classList.remove("choice-long")
+
+    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+correctQuestionArray[wrongIds[wrongQuestionIndex]]]
+    let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
+    rightAnwer.innerHTML =  right
+    wrongAnser.innerHTML = wrong
+    wrongQuestion.innerHTML = testQuestions[wrongIds[wrongQuestionIndex]].question
+
+    if(wrong.length > 120){
+        wrongAnser.classList.add("choice-long")
+    }else if(wrong.length > 60){
+        wrongAnser.classList.add("choice-medium")
+    }else{
+        wrongAnser.classList.add("choice-short")
+    }
+    if(right.length > 120){
+        rightAnwer.classList.add("choice-long")
+    }else if(right.length > 60){
+        rightAnwer.classList.add("choice-medium")
+    }else{
+        rightAnwer.classList.add("choice-short")
+    } 
+}
