@@ -149,26 +149,24 @@ line-height: 10%;
 
 #question{
   position: fixed;
-  
   text-align: center;
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
   z-index: 2;
 }
 
 #nextQuestion{
   transform: translate(-50%, -50%);
   position: fixed;
-  top: 75%;
+  top: 77%;
   left: 60%;
 
 }
 #previousQuestion{
   transform: translate(-50%, -50%);
   position: fixed;
-  top: 75%;
+  top: 77%;
   
   left: 40%;
 
@@ -276,7 +274,7 @@ line-height: 10%;
 
 #progress{
   position: fixed;
-  top: 30%;
+  top: 28%;
   left: 26%;
   font-size: 1.5vw;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
@@ -284,7 +282,7 @@ line-height: 10%;
 
 #correctQuestions{
   position: fixed;
-  top: 30%;
+  top: 15%;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   font-size: 1.5vw;
@@ -319,9 +317,55 @@ line-height: 10%;
 
 #timer{
   position: fixed;
-  top: 30%;
+  top: 28%;
   left: 69%;
   font-size: 1.2vw;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   
+}
+#questionEndScreen{
+  position: fixed;
+  max-width: 40%;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2vw;
+}
+#forWrong{
+  position: fixed;
+  top: 28%;
+  max-width: 40%;
+  left: 29%;
+}
+
+#checkCorrect{
+  position: fixed;
+  max-width: 40%;
+  width: 100%;
+  left: 30%;
+  
+}
+#rightChoice{
+  background-color: rgb(15, 212, 15);
+  padding: 1.5rem;
+  width: 100%;
+  user-select: none;
+}
+#wrongChoice{
+  background-color: rgb(253, 46, 46);
+  padding: 1.5rem;
+  width: 100%;
+  user-select: none;
+
+}
+#previousWrongQuestion{
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 60%;
+  left: 35%;
+}
+#nextWrongQuestion{
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 60%;
+  left: 65%;
 }
