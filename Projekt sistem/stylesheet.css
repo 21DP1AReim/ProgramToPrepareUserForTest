@@ -247,6 +247,7 @@ line-height: 10%;
 
 #c1,#c2,#c3,#c4,#question{
   display: none;
+  user-select: none;
 }
 
 .selected{
