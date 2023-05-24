@@ -80,6 +80,21 @@
         <button id = "prevQuestion" class="btn" onclick="previousQuestion()" hidden>Previous Question </button>
         <button id = "finishTest" class="btn" onclick="finishTest()" hidden>Finish Test </button>
         <button id = "mainMenuBtn" class="btn" onclick="goBackToStartScreen()" hidden>Go back to start screen</button>
+        <div id = "forWrong" hidden>
+          <label id = "questionEndScreen" hidden> Don't feel discouraged, come back later and try again! Learning takes time!</label>
+         </div>
+        <div id="checkCorrect" hidden>
+          <div id="c5" class="choice-container">
+            <p class="izveles-prefix">C</p>
+            <p id ="rightChoice" data-number="5">Wrong choice</p>
+          </div>
+          <div id="c6" class="choice-container">
+            <p class="izveles-prefix">D</p>
+            <p id="wrongChoice" data-number="6">Right choice</p>
+          </div>
+          <button id="nextWrongQuestion" class="btn" onclick="nextWrongQuestion()">next</button>
+          <button id="previousWrongQuestion" class="btn" onclick="previousWrongQuestion()">previous</button>
+        </div>
         <script src="script.js"></script>
 </body>
 
