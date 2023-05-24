@@ -2853,7 +2853,7 @@ function finishTest(){
     if(wrongIds.length > 0){
         rightAnwer.innerHTML =  testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]]
         wrongAnser.innerHTML = testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]]
-        wrongQuestion.innerHTML = testQuestions[wrongIds[0]].question
+        wrongQuestion.innerHTML = `Question Nr. ${wrongIds[0]+1}: ${testQuestions[wrongIds[0]].question}`
         if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 120){
             wrongAnser.classList.add("choice-long")
         }else if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 60){
@@ -2874,9 +2874,6 @@ function finishTest(){
         document.getElementById("checkCorrect").style.display = "inline"
         
     }
-
-
-
 
     sec = Math.floor((elapsedTime / 1000) % 60);
     min = Math.floor((elapsedTime / (1000 * 60)) % 60);
@@ -2940,9 +2937,14 @@ function showNextQuestionBtn(){
 
 function goBackToStartScreen(){
 
+
+    document.getElementById("forWrong").style.display = "none"
+    document.getElementById("questionEndScreen").style.display = "none"
+    document.getElementById("checkCorrect").style.display = "none"
+
     document.getElementById("endScreenOutput").style.display = "none";
     document.getElementById("correctQuestions").style.display = "none"
-    document.getElementById("checkCorrect").style.display = "none"
+
     document.getElementById("mainMenuBtn").style.display = "none"
     document.getElementById("checkboxes").style.display = "inline";
     document.getElementById("startTestBtn").style.display ="inline";
@@ -3058,7 +3060,7 @@ function nextWrongQuestion(){
     let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
     rightAnwer.innerHTML =  right
     wrongAnser.innerHTML = wrong
-    wrongQuestion.innerHTML = testQuestions[wrongIds[wrongQuestionIndex]].question
+    wrongQuestion.innerHTML = `Question Nr. ${wrongIds[wrongQuestionIndex]+1}: ${testQuestions[wrongIds[wrongQuestionIndex]].question}`
 
     if(wrong.length > 120){
         wrongAnser.classList.add("choice-long")
@@ -3093,7 +3095,7 @@ function previousWrongQuestion(){
     let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
     rightAnwer.innerHTML =  right
     wrongAnser.innerHTML = wrong
-    wrongQuestion.innerHTML = testQuestions[wrongIds[wrongQuestionIndex]].question
+    wrongQuestion.innerHTML = `Question Nr. ${wrongIds[wrongQuestionIndex]+1}: ${testQuestions[wrongIds[wrongQuestionIndex]].question}`
 
     if(wrong.length > 120){
         wrongAnser.classList.add("choice-long")
