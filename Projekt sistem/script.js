@@ -18,6 +18,7 @@ let wrongQuestionIndex = 0
 let sec = 0;
 let min = 0;
 let hr = 0;
+let time = 0;
 let interval;
 let elapsedTime;
 let startTime;
@@ -2359,7 +2360,7 @@ let vnapQuestions = [ // valsts normatīvo aktu prasību jautājumi
     choice2: " 300 ls ", 
     choice3: " 400 lx ", 
     choice4: "500 lk ", 
-    answer: 4 
+    answer: 3
 },
 {
     question: " Kurš ir galvenais normatīvais akts darba tiesisko attiecību jomā? ", 
@@ -2573,10 +2574,15 @@ function startTest(){
     
     if(document.getElementById("radio2").checked){
         questionCountPerTheme = 5
+        time = 4500000
+               
     }else if(document.getElementById("radio3").checked){
         questionCountPerTheme = 10
+        time = time + questionCountPerTheme * 45000
+        time = time * checkboxes.length
     }else{
         questionCountPerTheme = 3
+        time = 450000
     }
     
 
@@ -2594,8 +2600,6 @@ function startTest(){
     question.innerText = currentQuestion.question
         
     updateQuestionFontSize()
-
-
     showUpdate()
 
     choices.forEach((choice) =>{
@@ -2833,12 +2837,46 @@ function removeSelect(){
 
 function finishTest(){
 
-    
+    elapsedTime = startTime - Date.now()
+    elapsedTime = time - elapsedTime
 
-    selectedAnswer = selectedChoice.dataset['number']
-    correctAnswer = testQuestions[currentQuestionIndex].answer;
-    userAnswerArray[currentQuestionIndex] = selectedAnswer
-    correctQuestionArray[currentQuestionIndex] = correctAnswer;
+    sec = Math.floor((elapsedTime / 1000) % 60);
+    min = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    console.log(elapsedTime)
+    hr = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
+
+
+    let spentTime =  ((hr * 60) + min)
+    
+    try{
+        selectedAnswer = selectedChoice.dataset['number']
+        correctAnswer = testQuestions[currentQuestionIndex].answer;
+        userAnswerArray[currentQuestionIndex] = selectedAnswer
+        correctQuestionArray[currentQuestionIndex] = correctAnswer;
+    }catch(error){
+    }
+
+    if(userAnswerArray.length <= 0){
+        document.getElementById("correctQuestions").innerText = `You got  0 out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${sec} seconds!`
+        startTimer(false);
+    
+    
+        document.getElementById("questionEndScreen").style.display = "inline";
+        
+        document.getElementById("correctQuestions").style.display = "inline";
+    
+        document.getElementById("mainMenuBtn").style.display = "inline"
+        document.getElementById("nxtQuestion").style.display = "none";
+        document.getElementById("prevQuestion").style.display = "none";
+        document.getElementById("finishTest").style.display = "none";
+        document.getElementById("progress").style.display = "none"
+    
+        document.getElementById("c1").style.display = "none";
+        document.getElementById("c2").style.display = "none";
+        document.getElementById("c3").style.display = "none";
+        document.getElementById("c4").style.display = "none";
+        document.getElementById("question").style.display = "none";
+    }
 
 
     for(let i = 0; i < testQuestions.length; i++){
@@ -2854,6 +2892,7 @@ function finishTest(){
         rightAnwer.innerHTML =  testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]]
         wrongAnser.innerHTML = testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]]
         wrongQuestion.innerHTML = `Question Nr. ${wrongIds[0]+1}: ${testQuestions[wrongIds[0]].question}`
+        
         if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 120){
             wrongAnser.classList.add("choice-long")
         }else if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 60){
@@ -2875,11 +2914,7 @@ function finishTest(){
         
     }
 
-    sec = Math.floor((elapsedTime / 1000) % 60);
-    min = Math.floor((elapsedTime / (1000 * 60)) % 60);
-    hr = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
 
-    let spentTime = hr / 60 + min
 
     let correctQuestions = () =>{
         let correct = 0;
@@ -2894,9 +2929,6 @@ function finishTest(){
         return correct;
         
     }
-
-
-
 
     console.log(userAnswerArray)
     console.log(correctQuestionArray)
@@ -2953,14 +2985,24 @@ function goBackToStartScreen(){
 
     document.getElementById("radio2").checked = true
 
+
     questionCountPerTheme = 0
     currentQuestionIndex = 0
     correctQuestionArray = []
     userAnswerArray = []
     selectedChoice = 0;
-
+    wrongIds = []
     selectedAnswer;
     correctAnswer;
+    wrongQuestionIndex = 0
+    sec = 0;
+    min = 0;
+    hr = 0;
+    time = 0;
+    interval = 0
+    elapsedTime = 0
+    startTime = 0
+
 
     testQuestions = []
     arrLength = 0
@@ -3021,12 +3063,17 @@ function startTimer(bool){
     return
 }
 timer.style.display = "inline";
-startTime = Date.now();
+startTime = Date.now() + time;
+testStarted = Date.now()
 interval = setInterval(updateTimeOnTimer, 250)
 
 }
 function updateTimeOnTimer(){
-    elapsedTime = Date.now() - startTime;
+    elapsedTime =  startTime - Date.now();
+    if(elapsedTime <= 0){
+        elapsedTime = startTime - testStarted
+        finishTest()
+    }
 
     sec = Math.floor((elapsedTime / 1000) % 60);
     min = Math.floor((elapsedTime / (1000 * 60)) % 60);
@@ -3041,6 +3088,7 @@ function updateTimeOnTimer(){
     function pad(unit){
         return (("0") + unit).length > 2 ? unit : "0" + unit;
     }
+    
 }
 
 function nextWrongQuestion(){
@@ -3056,26 +3104,29 @@ function nextWrongQuestion(){
     wrongAnser.classList.remove("choice-short")
     wrongAnser.classList.remove("choice-medium")
     wrongAnser.classList.remove("choice-long")
-    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+correctQuestionArray[wrongIds[wrongQuestionIndex]]]
+    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+testQuestions[wrongIds[wrongQuestionIndex]].answer]
     let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
     rightAnwer.innerHTML =  right
     wrongAnser.innerHTML = wrong
     wrongQuestion.innerHTML = `Question Nr. ${wrongIds[wrongQuestionIndex]+1}: ${testQuestions[wrongIds[wrongQuestionIndex]].question}`
 
-    if(wrong.length > 120){
-        wrongAnser.classList.add("choice-long")
-    }else if(wrong.length > 60){
-        wrongAnser.classList.add("choice-medium")
-    }else{
-        wrongAnser.classList.add("choice-short")
-    }
+
     if(right.length > 120){
         rightAnwer.classList.add("choice-long")
     }else if(right.length > 60){
         rightAnwer.classList.add("choice-medium")
     }else{
         rightAnwer.classList.add("choice-short")
-    }   
+    } 
+
+    if( wrong === undefined ||  wrong.length > 60){
+        wrongAnser.classList.add("choice-medium")
+    }else if(wrong.length > 120){
+        wrongAnser.classList.add("choice-long")
+    }else{
+        wrongAnser.classList.add("choice-short")
+    }
+  
 }
 
 function previousWrongQuestion(){
@@ -3091,19 +3142,12 @@ function previousWrongQuestion(){
     wrongAnser.classList.remove("choice-medium")
     wrongAnser.classList.remove("choice-long")
 
-    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+correctQuestionArray[wrongIds[wrongQuestionIndex]]]
+    let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+testQuestions[wrongIds[wrongQuestionIndex]].answer]
     let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
     rightAnwer.innerHTML =  right
     wrongAnser.innerHTML = wrong
     wrongQuestion.innerHTML = `Question Nr. ${wrongIds[wrongQuestionIndex]+1}: ${testQuestions[wrongIds[wrongQuestionIndex]].question}`
 
-    if(wrong.length > 120){
-        wrongAnser.classList.add("choice-long")
-    }else if(wrong.length > 60){
-        wrongAnser.classList.add("choice-medium")
-    }else{
-        wrongAnser.classList.add("choice-short")
-    }
     if(right.length > 120){
         rightAnwer.classList.add("choice-long")
     }else if(right.length > 60){
@@ -3111,4 +3155,12 @@ function previousWrongQuestion(){
     }else{
         rightAnwer.classList.add("choice-short")
     } 
+
+    if( wrong === undefined ||  wrong.length > 60){
+        wrongAnser.classList.add("choice-medium")
+    }else if(wrong.length > 120){
+        wrongAnser.classList.add("choice-long")
+    }else{
+        wrongAnser.classList.add("choice-short")
+    }
 }
