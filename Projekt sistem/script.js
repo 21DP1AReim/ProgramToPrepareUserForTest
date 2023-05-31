@@ -2574,7 +2574,8 @@ function startTest(){
     
     if(document.getElementById("radio2").checked){
         questionCountPerTheme = 5
-        time = 4500000
+        time = time + questionCountPerTheme * 50000
+        time = time * checkboxes.length
                
     }else if(document.getElementById("radio3").checked){
         questionCountPerTheme = 10
@@ -2582,7 +2583,8 @@ function startTest(){
         time = time * checkboxes.length
     }else{
         questionCountPerTheme = 3
-        time = 450000
+        time = time + questionCountPerTheme * 60000
+        time = time * checkboxes.length
     }
     
 
@@ -2837,16 +2839,20 @@ function removeSelect(){
 
 function finishTest(){
 
+
     elapsedTime = startTime - Date.now()
     elapsedTime = time - elapsedTime
 
     sec = Math.floor((elapsedTime / 1000) % 60);
+    let seconds = sec
     min = Math.floor((elapsedTime / (1000 * 60)) % 60);
     console.log(elapsedTime)
     hr = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
 
 
     let spentTime =  ((hr * 60) + min)
+    console.log(spentTime)
+    
     
     try{
         selectedAnswer = selectedChoice.dataset['number']
@@ -2857,7 +2863,7 @@ function finishTest(){
     }
 
     if(userAnswerArray.length <= 0){
-        document.getElementById("correctQuestions").innerText = `You got  0 out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${sec} seconds!`
+        document.getElementById("correctQuestions").innerText = `You got  0 out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${seconds} seconds!`
         startTimer(false);
     
     
@@ -2889,24 +2895,31 @@ function finishTest(){
 
     
     if(wrongIds.length > 0){
-        rightAnwer.innerHTML =  testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]]
-        wrongAnser.innerHTML = testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]]
+
+        let right = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+testQuestions[wrongIds[wrongQuestionIndex]].answer]
+        let wrong = testQuestions[wrongIds[wrongQuestionIndex]]['choice'+userAnswerArray[wrongIds[wrongQuestionIndex]]]
+
+
+        rightAnwer.innerHTML =  right
+        wrongAnser.innerHTML = wrong
         wrongQuestion.innerHTML = `Question Nr. ${wrongIds[0]+1}: ${testQuestions[wrongIds[0]].question}`
         
-        if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 120){
-            wrongAnser.classList.add("choice-long")
-        }else if(testQuestions[wrongIds[0]]['choice'+userAnswerArray[wrongIds[0]]].length > 60){
-            wrongAnser.classList.add("choice-medium")
-        }else{
-            wrongAnser.classList.add("choice-short")
-        }
-        if(testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]].length > 120){
+        if(right.length > 120){
             rightAnwer.classList.add("choice-long")
-        }else if(testQuestions[wrongIds[0]]['choice'+correctQuestionArray[wrongIds[0]]].length > 60){
+        }else if(right.length > 60){
             rightAnwer.classList.add("choice-medium")
         }else{
             rightAnwer.classList.add("choice-short")
         } 
+
+        if(wrong === undefined || wrong.length > 120){
+            wrongAnser.classList.add("choice-long")
+        }else if(wrong.length > 60){
+            wrongAnser.classList.add("choice-medium")
+        }else{
+            wrongAnser.classList.add("choice-short")
+        }
+
 
         document.getElementById("forWrong").style.display = "inline"
         document.getElementById("questionEndScreen").style.display = "inline"
@@ -2932,8 +2945,8 @@ function finishTest(){
 
     console.log(userAnswerArray)
     console.log(correctQuestionArray)
-
-    document.getElementById("correctQuestions").innerText = `You got  ${correctQuestions()} out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${sec} seconds!`
+    console.log(sec)
+    document.getElementById("correctQuestions").innerText = `You got  ${correctQuestions()} out of ${testQuestions.length} questions right!\n You finished the test in ${spentTime} minutes and ${seconds} seconds!`
     startTimer(false);
 
 
